@@ -1,11 +1,16 @@
-<form class="example-form">
-    <mat-form-field class="example-full-width" appearance="fill">
+<form class="notes-form">
+    <mat-form-field class="full-width" appearance="fill">
       <mat-label>Заголовок</mat-label>
       <input matInput placeholder="Введите заголовок" value="">
     </mat-form-field>
   
-    <mat-form-field class="example-full-width" appearance="fill">
+    <mat-form-field class="full-width" appearance="fill">
       <mat-label>Заметка</mat-label>
-      <textarea matInput placeholder="Напишите заметку..."></textarea>
+      <textarea
+        matInput
+        placeholder="Напишите заметку..."
+        cdkTextareaAutosize="auto"
+        >
+    </textarea>
     </mat-form-field>
-  </form>
+</form>
