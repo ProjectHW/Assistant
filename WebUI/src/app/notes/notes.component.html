@@ -1,16 +1,59 @@
 <form class="notes-form">
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Заголовок</mat-label>
-      <input matInput placeholder="Введите заголовок" value="">
-    </mat-form-field>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Заголовок</mat-label>
+    <input matInput placeholder="Введите заголовок" value="">
+  </mat-form-field>
   
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Заметка</mat-label>
-      <textarea
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Заметка</mat-label>
+    
+    <div>
+    <textarea
         matInput
         placeholder="Напишите заметку..."
         cdkTextareaAutosize="auto"
         >
     </textarea>
-    </mat-form-field>
+  </div>
+  </mat-form-field>
+
+  <mat-form-field class="chip-list" appearance="fill">
+    <mat-label>аттрибуты</mat-label>
+    <mat-chip-list #chipList aria-label="Attributes selection">
+      <mat-chip
+        *ngFor="let attribute of attributes"
+        (removed)="remove(attribute)"
+        >
+        {{attribute}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        placeholder="Новый аттрибут..."
+        #attributeInput
+        [formControl]="attributeControl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let attribute of filteredAttributes | async" [value]="attribute">
+        {{attribute}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <!-- <div class="notesBox" 
+    cdkDrag
+    >
+    <mat-label>Заметка</mat-label>
+    <textarea
+        matInput
+        placeholder="Напишите заметку..."
+        cdkTextareaAutosize="auto"
+        >
+    </textarea>
+  </div> -->
 </form>

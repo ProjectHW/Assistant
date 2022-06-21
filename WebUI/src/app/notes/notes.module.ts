@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,6 +16,7 @@ import { MaterialModule } from '../material.module';
     BrowserModule,
     FormsModule,
     MatNativeDateModule,
+    
     MaterialModule,
     ReactiveFormsModule,
   ],
